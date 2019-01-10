@@ -12,7 +12,7 @@ export default class Home extends Component{
                 <Text>Para ver los comics relacionados con Deadpool</Text>
                 <Button 
                     title="Ver Comics"
-                    onPress={this.props.navigation.navigate('Comics')}
+                    onPress={() => this.props.navigation.navigate('ListComics')}
                 />
             </View>
         );

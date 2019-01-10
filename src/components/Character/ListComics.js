@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 export default class ListComics extends Component {
 	constructor(props){
-	super(props)
-	this.state = {
-	loading: false,
-	comics: [],
-	url: 'https://gateway.marvel.com/v1/public/comics?ts=9&apikey=c36ebb71e85e0545db0da33f6374920c&hash=a89db08e3804326bd41596df65ac3918'
-	}
+        super(props)
+        this.state = {
+            loading: false,
+            comics: [],
+            url: 'https://gateway.marvel.com/v1/public/comics?ts=9&apikey=c36ebb71e85e0545db0da33f6374920c&hash=a89db08e3804326bd41596df65ac3918'
+        }
 	}
 
 	componentDidMount(){
@@ -34,7 +34,6 @@ export default class ListComics extends Component {
 			return (
 				<View style={styles.container}>
 					<Text>Cargando comics...</Text>
-					<Text>T-T</Text>
 				</View>
 			);
 		}
@@ -53,16 +52,15 @@ export default class ListComics extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  listComics: {
-	  flex: 1,
-	  paddingTop: 50,
-	  paddingLeft: 5
-  }
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    listComics: {
+        flex: 1,
+        paddingTop: 50,
+        paddingLeft: 5
+    }
 });
