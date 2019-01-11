@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default class ListComics extends Component {
 	constructor(props){
@@ -41,7 +42,8 @@ export default class ListComics extends Component {
 		if(this.state.loading){
 			return (
 				<View style={styles.container}>
-					<Text>Cargando comics...</Text>
+					<Text style={styles.textStyle}>Cargando comics...</Text>
+					<MaterialIcons name="data-usage" size={25} color="white" />
 				</View>
 			);
 		}
@@ -68,7 +70,7 @@ export default class ListComics extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+		backgroundColor: '#DA1313',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -76,5 +78,9 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 50,
         paddingLeft: 5
-    }
+	},
+	textStyle: {
+		color: '#fff',
+		fontSize: 18
+	}
 });
