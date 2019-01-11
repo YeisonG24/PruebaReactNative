@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 export default class ListComics extends Component {
@@ -29,6 +29,14 @@ export default class ListComics extends Component {
 		.catch(err => console.log(err))
 	};
 
+	static navigationOptions = {
+        title: 'MARVEL API',
+        headerStyle: { backgroundColor: '#fff'},
+        headerTitle: (
+            <Image style={{ width: 85, height: 39, marginLeft: 80}} source={require('../../../assets/marvel-logo.png')} />
+        )
+	}
+	
 	render() {
 		if(this.state.loading){
 			return (
@@ -43,7 +51,13 @@ export default class ListComics extends Component {
 				<FlatList 
 					data={this.state.comics}
 					renderItem = {
-						({item}) => <Text>{ item.title }</Text>
+						({item}) => <View>
+							<Text>{ item.title }</Text>
+							<Button 
+								title="Ver detalle"
+								onPress={()=> this.props.navigation.navigate('DetailComic')}
+							/>
+						</View>
 					}
 				/>
 			</View>
