@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.prueba.testreactnative"
+    },
+    "android": {
+      "package": "com.prueba.testreactnative"
     }
   }
 }
