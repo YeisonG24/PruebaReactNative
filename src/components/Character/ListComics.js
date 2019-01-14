@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, ListView, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, FlatList, TouchableHighlight } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import DetailComic from './DetailComic';
+import Pagination from 'react-native-pagination';
 
 const REQUEST_URL = "https://gateway.marvel.com:443/v1/public/characters/1009268/comics";
 
@@ -13,33 +13,38 @@ export default class ListComics extends Component {
 		this.public_key = '253e35bd5ff18eb2600b48db35da5cd6';
 		this.hash = '8fee616eeedb7b355f5f9086c3b9b978';
 		this.state = {
-			dataSource: new ListView.DataSource({
-				rowHasChanged: (row1, row2) => row1 !== row2
-			}),
-			loaded: false
+			comics: [],
+			isLoading: false
 		}
+		this.handleViewableItemsChanged = this.handleViewableItemsChanged.bind(this)
 	}
 
 	componentDidMount(){
 		this.fetchData()
 	}
 
-	fetchData(){
-		fetch(REQUEST_URL+'?ts='+this.timestamp+'&apikey='+this.public_key+'&hash='+this.hash)
+	handleViewableItemsChanged(info){
+		console.log(info)
+	}
+
+	fetchData = () => {
+		this.setState({isLoading: true})
+
+		fetch(REQUEST_URL+'?limit=30&ts='+this.timestamp+'&apikey='+this.public_key+'&hash='+this.hash)
 		.then(res => res.json())
-		.then(resData => {
+		.then(res => {
 			this.setState({
-				dataSource: this.state.dataSource.cloneWithRows(resData.data.results),
-				loaded: true
+				comics: res.data.results,
+				isLoading: false
 			})
 		})
 	}
 
 	static navigationOptions = {
         title: 'MARVEL API',
-        headerStyle: { backgroundColor: '#fff'},
+        headerStyle: { backgroundColor: '#fff' },
         headerTitle: (
-            <Image style={{ width: 85, height: 39, marginLeft: 80}} source={require('../../../assets/marvel-logo.png')} />
+			<Image style={{ width: 85, height: 39, marginLeft: 80}} source={require('../../../assets/marvel-logo.png')} />
         )
 	}
 
@@ -49,37 +54,52 @@ export default class ListComics extends Component {
 				<Text style={styles.textStyle}>Cargando comics...</Text>
 				<MaterialIcons name="data-usage" size={25} color="white" />
 			</View>
-		)
+		);
 	}
 
-	renderComic(comic){
+	renderListComics(item){
 		return(
-			<TouchableHighlight onPress={() => this.onComic(comic)}>
-				<ImageBackground source={{uri: comic.thumbnail.path+'/detail'+'.jpg'}} style={styles.backgroundImage}>
+			<TouchableHighlight onPress={() => this.onComic(item)}>
+				<ImageBackground source={{uri: item.thumbnail.path+'/detail'+'.jpg'}} style={styles.backgroundImage}>
 					<View style={styles.rightContainer}>
-						<Text style={styles.title}>{comic.title}</Text>
+						<Text style={styles.title}>{item.title}</Text>
 					</View>
 				</ImageBackground>
 			</TouchableHighlight>
-		)
+		);
 	}
 
 	render() {
-		if(!this.state.loaded){
+		if(this.state.isLoading){
 			return this.renderLoading();
 		}
 		return(
-			<ListView 
-				dataSource = {this.state.dataSource}
-				renderRow = {this.renderComic.bind(this)}
-				style={styles.listView}
-			/>
+			<View>
+				<FlatList 
+					data={this.state.comics}
+					initialNumToRender={10}
+					renderItem={
+						({item}) =>
+						this.renderListComics(item)
+					}
+					ref={r=>this.refs=r}
+					keyExtractor={(item, index) => index.toString()}
+					onViewableItemsChanged={this.handleViewableItemsChanged}
+					onEndReachedThreshold={0.5}
+				/>
+				<Pagination 
+					listRef={this.refs}
+					paginationVisibleItems={this.state.viewableItems}
+					paginationItems={this.state.items}
+					paginationItemPadSize={10}
+				/>
+			</View>
 		)
 	}
 
-	onComic(comic){
+	onComic(item){
 		this.props.navigation.push('DetailComic', {
-			passProps: {comic:comic}
+			passProps: {item:item}
 		})
 	}
 }

@@ -4,33 +4,34 @@ import { StyleSheet, Text, Image, View, ScrollView } from 'react-native';
 export default class DetailComic extends Component{
     constructor(props){
         super(props)
-        this.specificProps = this.props.navigation.state.params.passProps;
-        console.log(this.specificProps.comic.id)
-        this.modified = this.specificProps.comic.modified.slice(0, 10)
+        this.specificProps = this.props.navigation.state.params.passProps.item;
+        this.modified = this.specificProps.modified.slice(0, 10)
     }
 
     static navigationOptions = {
         title: 'MARVEL API',
         headerStyle: { backgroundColor: '#fff'},
         headerTitle: (
-            <Image style={{ width: 85, height: 39, marginLeft: 80}} source={require('../../../assets/marvel-logo.png')} />
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <Image style={{ width: 85, height: 39, marginLeft: 80}} source={require('../../../assets/marvel-logo.png')} />
+            </View>
         )
 	}
 
     render(){
         return(
             <View style={styles.container}>
-                <Image source={{uri: this.specificProps.comic.thumbnail.path+'/landscape_incredible'+'.jpg'}} style={styles.image} />
+                <Image source={{uri: this.specificProps.thumbnail.path+'/landscape_incredible'+'.jpg'}} style={styles.image} />
                 <ScrollView style={styles.subcontainer}>
-                    <Text style={styles.title}>{this.specificProps.comic.title}</Text>
+                    <Text style={styles.title}>{this.specificProps.title}</Text>
                     <Text style={styles.title}>SERIE: </Text>
-                    <Text style={styles.textStyle}>{this.specificProps.comic.series.name}</Text>
+                    <Text style={styles.textStyle}>{this.specificProps.series.name}</Text>
                     <Text style={styles.title}>DESCRIPCIÓN: </Text>
-                    <Text style={styles.textStyle}>{this.specificProps.comic.description}</Text>
+                    <Text style={styles.textStyle}>{this.specificProps.description}</Text>
                     <Text style={styles.title}>ACTUALIZACIÓN: </Text>
                     <Text style={styles.textStyle}>{this.modified}</Text>
                     <Text style={styles.title}>PAGÍNAS: </Text>
-                    <Text style={styles.textStyle}>{this.specificProps.comic.pageCount}</Text>
+                    <Text style={styles.textStyle}>{this.specificProps.pageCount}</Text>
                     <Text style={styles.padding}/>
                 </ScrollView>
             </View>
@@ -68,8 +69,9 @@ const styles = StyleSheet.create({
     },
     image: {
         height: 200,
-        width: 360,
-        alignSelf: 'stretch',
+        justifyContent: 'center',
+		alignItems: 'center',
+		alignSelf: 'stretch',
         marginBottom: 10
     },
     padding: {

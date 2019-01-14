@@ -4602,6 +4602,11 @@ react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 
+react-native-paginated-listview@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-paginated-listview/-/react-native-paginated-listview-1.0.2.tgz#39334bd879f2e7ef1cc4ef5ba5633c20deda0671"
+  integrity sha1-OTNL2Hny5+8cxO9bpWM8IN7aBnE=
+
 react-native-pagination@^1.5.5:
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/react-native-pagination/-/react-native-pagination-1.5.5.tgz#ba4c9aece72a42088bdc303340bda00c46a399d9"

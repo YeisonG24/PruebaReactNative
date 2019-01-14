@@ -1,30 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add reat-native-pagination
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-paginated-listview --save
 
 PATH: 
-  C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_161\bin;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Yarn\bin\;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\Yeison Gonzalez\AppData\Roaming\Composer\vendor\bin;C:\Users\Yeison Gonzalez\AppData\Roaming\npm;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\Yeison Gonzalez\AppData\Local\Yarn\bin
+  C:\ProgramData\Oracle\Java\javapath;c:\Program Files (x86)\Intel\iCLS Client\;c:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:/xampp/php;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Microsoft VS Code\bin;C:\Users\IMAGINAMOS\AppData\Roaming\npm;C:\Users\IMAGINAMOS\AppData\Local\Yarn\bin
 
 Yarn version: 
-  1.13.0
+  1.12.3
 
 Node version: 
-  8.11.3
+  10.14.2
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/reat-native-pagination: Not found
-      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:65364:18)
-      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:129397:22)
-      at emitTwo (events.js:126:13)
-      at Request.emit (events.js:214:7)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:130369:10)
-      at emitOne (events.js:116:13)
-      at Request.emit (events.js:211:7)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:130291:12)
-      at Object.onceWrapper (events.js:313:30)
-      at emitNone (events.js:111:20)
+  Error: EPERM: operation not permitted, unlink 'C:\Users\IMAGINAMOS\Documents\test-react-native\node_modules\react-native-elements\node_modules\.bin'
 
 npm manifest: 
   {
@@ -41,6 +31,7 @@ npm manifest:
       "react": "16.5.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
       "react-native-elements": "^0.19.1",
+      "react-native-pagination": "^1.5.5",
       "react-native-vector-icons": "^6.1.0",
       "react-navigation": "^3.0.9",
       "stream": "^0.0.2"
@@ -4659,6 +4650,13 @@ Lockfile:
     version "0.22.1"
     resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
   
+  react-native-pagination@^1.5.5:
+    version "1.5.5"
+    resolved "https://registry.yarnpkg.com/react-native-pagination/-/react-native-pagination-1.5.5.tgz#ba4c9aece72a42088bdc303340bda00c46a399d9"
+    integrity sha512-gh3+Cu0uWFljH0p2S2vi7b8PEyrvYnO6jPBj8QcI+kfgZZ8McXxdIisHTiXeISTCoZkIInfwjLMPU12knFAI3w==
+    dependencies:
+      react-native-vector-icons "^4.3.0"
+  
   react-native-reanimated@1.0.0-alpha.11:
     version "1.0.0-alpha.11"
     resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.0-alpha.11.tgz#b78c839bae878d149561b56a3c750414957ea86d"
@@ -4711,6 +4709,15 @@ Lockfile:
     dependencies:
       lodash "^4.0.0"
       prop-types "^15.6.2"
+      yargs "^8.0.2"
+  
+  react-native-vector-icons@^4.3.0:
+    version "4.6.0"
+    resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.6.0.tgz#e4014311ffa6de397d914ffc31b7097a874cc8d5"
+    integrity sha512-rpfhfPiXCK2PX1nrNhdxSMrEGB/Gw/SvKoPM0G2wAkSoqynnes19K0VYI+Up7DqR1rFIpE4hP2erpT1tNx2tfg==
+    dependencies:
+      lodash "^4.0.0"
+      prop-types "^15.5.10"
       yargs "^8.0.2"
   
   react-native-vector-icons@^6.1.0:

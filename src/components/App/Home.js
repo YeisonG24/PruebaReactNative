@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Button } from 'react-native-elements';
 
 export default class Home extends Component{
     static navigationOptions = {
@@ -14,20 +15,24 @@ export default class Home extends Component{
         const { navigate } = this.props.navigation;
         return(
             <View style={styles.container}>
-                <Image source={require('../../../assets/fondo.jpg')} style={styles.styleImage}/>
-                <View style={styles.styleContent}> 
-                    <Text style={styles.styleText}>Comics relacionados con:</Text>
-                    <Text style={styles.bold}>DEADPOOL</Text>
-                    <Button
-                        color="#FF4444"
-                        title="Ver Comics"
-                        onPress={() => this.props.navigation.navigate('ListComics')}
-                    />
-                </View>
+                <ImageBackground source={require('../../../assets/fondo.jpg')} style={styles.styleImage}>
+                    <View style={styles.styleContent}> 
+                        <Text style={styles.styleText}>Comics relacionados con:</Text>
+                        <Text style={styles.bold}>DEADPOOL</Text>
+                        <Button
+                            icon={{name: 'toc', size: 25 }}
+                            title="Ver Comics"
+                            buttonStyle={styles.button}
+                            color="#fff"
+                            onPress={() => this.props.navigation.navigate('ListComics')}
+                        />
+                    </View>
+                </ImageBackground>
                 <View style={styles.styleFooter}>
                     <View>
                         <Text style={styles.colorText}>Todos los derechos reservados </Text>
                         <Text style={styles.footer}>©2019 Imaginamos</Text>
+                        <Text style={styles.footer}>MARVEL</Text>
                     </View>
                 </View>
             </View>
@@ -52,11 +57,14 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         color: '#fff',
-        marginBottom: 8
+        letterSpacing: 1,
+        marginBottom: 7
     },
     styleImage: {
-        width: 400,
-        height: 600
+        height: 600,
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'stretch'
     },
     styleFooter: {
         flex: 1,
@@ -78,10 +86,15 @@ const styles = StyleSheet.create({
     },
     bold: {
         fontWeight: 'bold',
-        fontSize: 15,
+        fontSize: 20,
         color: '#fff',
         textAlign: 'center',
         fontStyle: 'italic',
-        marginBottom: 15
+        marginBottom: 15,
+        letterSpacing: 2
+    },
+    button: {
+        backgroundColor: '#FF4444',
+        borderRadius: 5,
     }
 })
